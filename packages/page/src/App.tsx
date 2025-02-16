@@ -9,7 +9,7 @@ export const App = () => {
   const { isDarkMode } = useTheme();
 
   return (
-      <div
+      <main
         className={`min-h-80 h-full flex flex-col items-center pt-20 ${
           isDarkMode ? "bg-gray-900" : "bg-gray-200"
         }`}
@@ -53,6 +53,6 @@ export const App = () => {
           ]}
         />
       <Footer />
-      </div>
+      </main>
   );
 };

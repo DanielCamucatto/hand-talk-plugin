@@ -80,7 +80,7 @@ const Card = ({
             {description}
           </p>
           <div className="mt-4">
-            <h4 className="font-bold">{subTitle}</h4>
+            <h3 className="font-bold">{subTitle}</h3>
             {tools.length > 0 && (
               <div>
                 <h3 className="font-semibold">Ferramentas</h3>
