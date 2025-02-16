@@ -1,4 +1,5 @@
 import { useTheme } from '../../contexts/ThemeContext';
+
 interface ButtonProps {
     name: string;
     bgColor?: string;
