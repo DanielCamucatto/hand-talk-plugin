@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useTheme } from "./contexts/ThemeContext";
 import { Navbar } from "./components/Navbar/Navbar";
 import Avatar from "./components/Avatar/Avatar";
@@ -7,6 +8,17 @@ import Footer from "./components/Footer/Footer";
 
 export const App = () => {
   const { isDarkMode } = useTheme();
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = '/packages/plugin/dist/plugin.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, [])
 
   return (
       <main
