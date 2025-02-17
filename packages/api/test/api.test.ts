@@ -2,7 +2,7 @@ import request from 'supertest';
 import app from '../src/app';
 import * as dotenv from 'dotenv';
 
-dotenv.config({ path: '.env.test' }); // Carrega as variáveis de ambiente de teste
+dotenv.config({ path: '.env.test' }); 
 
 describe('API Tests', () => {
   it('should collect data successfully', async () => {
@@ -15,7 +15,7 @@ describe('API Tests', () => {
 
     const response = await request(app)
       .post('/collect')
-      .set('Authorization', process.env.TOKEN_DOMINIO_1) // Usa a variável de ambiente
+      .set('Authorization',  `Bearer ${process.env.TOKEN_DOMINIO_1}`) 
       .send(data);
 
     expect(response.status).toBe(200);
@@ -25,7 +25,7 @@ describe('API Tests', () => {
   it('should return 401 if token is not provided', async () => {
     const response = await request(app)
       .post('/collect')
-      .send({}); // Não envia o token
+      .send({});
 
     expect(response.status).toBe(401);
     expect(response.body.message).toBe('Token não fornecido');
@@ -34,12 +34,11 @@ describe('API Tests', () => {
   it('should return 401 if token is invalid', async () => {
     const response = await request(app)
       .post('/collect')
-      .set('Authorization', 'token_invalido') // Token inválido
+      .set('Authorization', 'token_invalido') 
       .send({});
 
     expect(response.status).toBe(401);
     expect(response.body.message).toBe('Token inválido');
   });
 
-  // Adicione mais testes para outros cenários, como limite de requisições, etc.
 });
