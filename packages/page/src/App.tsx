@@ -10,15 +10,19 @@ export const App = () => {
   const { isDarkMode } = useTheme();
 
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = '/packages/plugin/dist/plugin.js';
+    const script = document.createElement('script');
+    script.src = '/plugin/plugin.js';
     script.async = true;
     document.body.appendChild(script);
 
-    return () => {
-      document.body.removeChild(script);
+    script.onload = () => {
+      console.log('Plugin loaded successfully!');
     };
-  }, [])
+
+    script.onerror = (error) => {
+      console.log('Error loading plugin:', error);
+    };
+  }, []);
 
   return (
       <main

@@ -1,8 +1,8 @@
-// src/plugin.ts
 import { getDevice, getOperatingSystem } from './utils';
 import { ThemeData } from './types';
+import {config} from './config';
 
-// Função para injetar o botão na página
+
 function injectButton() {
   const button = document.createElement('button');
   button.innerText = 'Extrair Dados';
@@ -11,7 +11,6 @@ function injectButton() {
   document.body.appendChild(button);
 }
 
-// Função principal para extrair os dados
 function extractData() {
   const device = getDevice();
   const operatingSystem = getOperatingSystem();
@@ -41,12 +40,13 @@ function getThemeChangesCount() {
   return themeChangesCount;
 }
 
-const API_ENDPOINT = 'http://localhost:3000/collect';
+const API_ENDPOINT = config.API_ENDPOINT 
 async function sendDataToAPI(data: ThemeData) {
   const response = await fetch(API_ENDPOINT, { 
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'Authorization': `Bearer ${config.TOKEN_PLUGIN}`,
     },
     body: JSON.stringify(data),
   });
@@ -74,5 +74,4 @@ function showFeedback(message: string, type: 'success' | 'error') {
   setTimeout(() => feedback.remove(), 3000);
 }
 
-// Garante que a função injectButton seja chamada quando o script for carregado
 injectButton();

@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  mode: 'production', // Use 'production' para o build final
   entry: './src/plugin.ts',
   output: {
     filename: 'plugin.js',
@@ -18,4 +19,5 @@ module.exports = {
       },
     ],
   },
+  target: 'web',
 };
