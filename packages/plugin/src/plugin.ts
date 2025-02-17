@@ -3,7 +3,7 @@ import { ThemeData } from './types';
 import {config} from './config';
 
 
-function injectButton() {
+export function injectButton() {
   const button = document.createElement('button');
   button.innerText = 'Extrair Dados';
   button.classList.add('extrair-dados-btn');
