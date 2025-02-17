@@ -1,0 +1,10 @@
+{
+    "rules": {
+      "data": {
+        "$token": {
+          ".read": "auth.token === $token",
+          ".write": "auth.token === $token && data.count < 5"
+        }
+      }
+    }
+  }
