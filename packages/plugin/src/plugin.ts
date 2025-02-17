@@ -33,7 +33,7 @@ function extractData() {
     });
 }
 
-// Função para contar mudanças de tema (exemplo básico)
+
 let themeChangesCount = 0;
 function getThemeChangesCount() {
   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -41,9 +41,9 @@ function getThemeChangesCount() {
   return themeChangesCount;
 }
 
-// Função para enviar os dados para a API
+const API_ENDPOINT = 'http://localhost:3000/collect';
 async function sendDataToAPI(data: ThemeData) {
-  const response = await fetch('YOUR_API_ENDPOINT', { // Substitua pelo seu endpoint
+  const response = await fetch(API_ENDPOINT, { 
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

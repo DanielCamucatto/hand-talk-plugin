@@ -1,4 +1,4 @@
-interface ThemeData {
+export interface ThemeData {
     device: string;
     operatingSystem: string;
     origin: string;
