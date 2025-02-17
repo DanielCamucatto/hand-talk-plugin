@@ -6,7 +6,7 @@ import {config} from './config';
 function injectButton() {
   const button = document.createElement('button');
   button.innerText = 'Extrair Dados';
-  button.style.cssText = 'position: fixed; bottom: 20px; right: 20px; padding: 10px; z-index: 9999;';
+  button.classList.add('extrair-dados-btn');
   button.addEventListener('click', extractData);
   document.body.appendChild(button);
 }
